@@ -2,8 +2,6 @@ package com.example.demo.PaymentProcessorType;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.IPaymentProcessor;
-
 @Service
 public class PaypalProcessor implements IPaymentProcessor {
     public String getType() {

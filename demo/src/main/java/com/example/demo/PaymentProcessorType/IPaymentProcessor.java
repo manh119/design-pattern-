@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.PaymentProcessorType;
 
 public interface IPaymentProcessor {
     String getType();
