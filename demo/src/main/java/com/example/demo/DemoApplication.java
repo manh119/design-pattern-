@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.example.demo.Notification.NotificationService;
+import com.example.demo.Notification.NotificationServiceProxyImpl;
 import com.example.demo.Notification.NotificationType;
 import com.example.demo.Order.OrderProcess;
 
@@ -26,9 +27,13 @@ public class DemoApplication {
 
 		OrderProcess orderProcess = context.getBean(OrderProcess.class);
 		orderProcess.processOrder("ORD123", 250.75, "Visa");
-		NotificationService notificationService = context.getBean(NotificationService.class);
-		notificationService.notify(NotificationType.ZALO, "CUST456",
-				"Your order ORD123 has been processed successfully!");
+		NotificationService notificationService = context.getBean(NotificationServiceProxyImpl.class);
+		for (int i = 1; i <= 7; i++) {
+			notificationService.notify(NotificationType.EMAIL, "customer1",
+					"Your order has been shipped! Attempt " + i);
+			// wait 3 seconds
+
+		}
 
 	}
 
